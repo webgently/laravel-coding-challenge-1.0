@@ -25,7 +25,7 @@
                         </div>
                         <input type="text" id="movie-search" class="border text-sm rounded-lg  
                             block w-full pl-10 p-2.5 dark:placeholder-gray-400 dark:text-black 
-                            dark:focus:ring-blue-500" placeholder="Search" required="">
+                            dark:focus:ring-blue-500" placeholder="Search" required="" onkeyup="processChange(this.value)">
                     </div>
                 </div>
             </div>
