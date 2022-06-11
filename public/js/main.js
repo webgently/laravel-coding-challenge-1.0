@@ -25,9 +25,11 @@ function getApi(str) {
 }
 // display search result
 function searchDisplay(data, str) {
+    console.log(data);
     let searchResult = '';
     data.Search.forEach(element => {
         const displayData = `${element.Poster}~${element.Title}~${element.Type}~${element.Year}~${element.imdbID}`;
+        console.log(displayData);
         searchResult += `
             <li class="flex justify-between border-b-[1px]">\
                 <p>${element.Title}</p>\
@@ -41,6 +43,7 @@ function searchDisplay(data, str) {
 }
 // select 
 function select(str) {
+    console.log(str);
     const displayData = {
         Poster: str.split('~')[0],
         Title: str.split('~')[1],
@@ -61,6 +64,7 @@ function select(str) {
 }
 // display selected result
 function selectDisplay(data) {
+    console.log(data);
     const selectdata = `
         <li id="dlist-${data.imdbID}" class="flex justify-between border-b-[1px]">\
             <p>${data.Title}</p>\
@@ -75,4 +79,17 @@ function selectDisplay(data) {
     if (selected.length === 5) {
         alert("Selected 5 movies");
     }
+}
+// remove
+function remove(id) {
+    console.log(id);
+    const index = selected.findIndex(element => element.imdbID === id);
+
+    if (index >= 0) {
+        selected.splice(index, 1);
+    }
+    $('#selected_count').text(selected.length);
+    $('#dlist-' + id).remove();
+    $('#cbtn-' + id).prop('disabled', false);
+    $('#cbtn-' + id).removeClass('bg-gray-500 hover:bg-gray-700').addClass('bg-blue-500 hover:bg-blue-700');
 }
